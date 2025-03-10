@@ -1,56 +1,66 @@
 from flask import Flask, request
-from db import SmartphoneDB
+from db import ProductsDB
 
 
 app = Flask(__name__)
-db = SmartphoneDB('db.json')
+db = ProductsDB('products_db.json')
 
+## view all products
+@app.route('/products', methods=['GET'])
+def get_all_products():
+    """Returns all products in the database"""
+    pass
 
-## view all smartphone
-@app.route('/smartphones', methods=['GET'])
-def get_all_smartphones():
-    """Returns all smartphones in the database"""
+# view all product by id
+@app.route('/products/id/<id>', methods=['GET'])
+def get_all_product(id):
+    """Returns product in the database by id"""
     pass
 
 
-# view all brands
-@app.route('/smartphones/brands', methods=['GET'])
-def get_all_brands():
-    """Returns all brands in the database"""
+# view all ptoducts names
+@app.route('/products/names', methods=['GET'])
+def get_product_all_names():
+    """Returns all product names"""
     pass
 
 
-# view all smartphones by brand
-@app.route('/smartphones/<brand>', methods=['GET'])
-def get_smartphone_by_brand(brand):
-    """Returns all products by brand"""
-    pass
-
-
-# view smartphone by name
-@app.route('/smartphones/name/<name>', methods=['GET'])
-def get_smartphone_by_name(name):
+# view products by name
+@app.route('/productss/name/<name>', methods=['GET'])
+def get_products_by_name(name):
     """Returns a product by name"""
     pass
 
+# view all ptoducts catagories
+@app.route('/products/catagories', methods=['GET'])
+def get_product_all_catagories():
+    """Returns all product catagories"""
+    pass
 
-# view smartphone by price
-@app.route('/smartphones/price/<price>', methods=['GET'])
-def get_smartphone_by_price(price):
+# view products by price
+@app.route('/products/price/<price>', methods=['GET'])
+def get_products_by_price(price):
     """Returns a product by price"""
     pass
 
+# view products between max_price and min_price
+@app.route('/products/price/between', methods=['GET'])
+def get_products_by_price():
+    """Returns a products between max_price and min_price
+    get max_price and min_price from query_string
+    """
+    pass
 
-# view add smartphone
-@app.route('/smartphone/add', methods=['POST'])
-def add_smartphone():
+# view add product
+@app.route('/products/add', methods=['POST'])
+def add_products():
     """Adds a product to the database"""
     pass
 
 
-# view delete smartphone
-@app.route('/smartphone/delete/<doc_id>', methods=['DELETE'])
-def delete_smartphone(doc_id):
+# view delete product
+@app.route('/products/delete/<doc_id>', methods=['DELETE'])
+def delete_product(doc_id):
     """Deletes a product from the database"""
     pass
 
