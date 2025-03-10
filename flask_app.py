@@ -9,14 +9,13 @@ db = ProductsDB('products_db.json')
 @app.route('/products', methods=['GET'])
 def get_all_products():
     """Returns all products in the database"""
-    pass
+    return db.all_products()
 
 # view all product by id
 @app.route('/products/id/<id>', methods=['GET'])
 def get_all_product(id):
     """Returns product in the database by id"""
     pass
-
 
 # view all ptoducts names
 @app.route('/products/names', methods=['GET'])
@@ -45,7 +44,7 @@ def get_products_by_price(price):
 
 # view products between max_price and min_price
 @app.route('/products/price/between', methods=['GET'])
-def get_products_by_price():
+def get_between_price():
     """Returns a products between max_price and min_price
     get max_price and min_price from query_string
     """
