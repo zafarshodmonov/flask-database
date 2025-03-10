@@ -6,27 +6,39 @@ class ProductsDB:
         self.db = TinyDB(db_path)
         self.query = Query()
     
-    def brands(self):
-        """Returns all brands in the database"""
-        return self.db.all()
+    def all_products(self):
+        """Returns all products in the database"""
+        return 
     
-    def get_smartphone_by_brand(self, brand):
-        """Returns all products by brand"""
+    def get_product_id(self, id):
+        """Returns all products by id"""
         pass
     
-    def get_smartphone_by_name(self, name):
-        """Returns a product by name"""
+    def get_all_product_names(self):
+        """Returns all product names"""
         pass
 
-    def get_smartphone_by_price(self, price):
-        """Returns a product by price"""
+    def get_names(self, name: str):
+        """Returns all products by name"""
+        pass
+
+    def get_all_catagories(self):
+        """Returns all catagories name"""
+        pass
+
+    def expensive_products(self, price):
+        """Returns a top three expensive products"""
         pass
     
-    def add_smartphone(self, smartphone, brand):
+    def get_between_price(self, max_price, min_price):
+        """Returns a products between max_price and min_price"""
+        pass
+
+    def add_product(self, product):
         """Adds a product to the database"""
         pass
     
-    def delete_smartphone(self, doc_id, brand):
+    def delete_product(self, doc_id, brand):
         """Deletes a product from the database"""
         pass
 
