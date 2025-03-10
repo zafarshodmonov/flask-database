@@ -5,10 +5,11 @@ class ProductsDB:
     def __init__(self, db_path):
         self.db = TinyDB(db_path)
         self.query = Query()
+        self.table = self.db.table('Products')
     
     def all_products(self):
         """Returns all products in the database"""
-        return 
+        pass
     
     def get_product_id(self, id):
         """Returns all products by id"""
@@ -25,8 +26,12 @@ class ProductsDB:
     def get_all_catagories(self):
         """Returns all catagories name"""
         pass
+    
+    def get_small_from_price(self, price):
+        """Returns products if product's price small from price"""
+        pass
 
-    def expensive_products(self, price):
+    def expensive_products(self):
         """Returns a top three expensive products"""
         pass
     
@@ -37,10 +42,7 @@ class ProductsDB:
     def add_product(self, product):
         """Adds a product to the database"""
         pass
-    
-    def delete_product(self, doc_id, brand):
-        """Deletes a product from the database"""
-        pass
 
-data = ProductsDB('products.json')
-print(data.brands())
+    def delete_product(self, doc_id):
+        """Deletes a product from the database"""
+
