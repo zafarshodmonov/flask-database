@@ -10,21 +10,18 @@ db = ProductsDB('products_db.json')
 def get_all_products():
     """Returns all products in the database"""
     return db.all_products()
-    pass
 
 # view all product by id
 @app.route('/products/id/<id>', methods=['GET'])
 def get_all_product(id):
     """Returns product in the database by id"""
     return db.get_product_id(id)
-    pass
 
 # view all ptoducts names
 @app.route('/products/names', methods=['GET'])
 def get_product_all_names():
     """Returns all product names"""
     return db.get_all_product_names()
-    pass
 
 
 # view products by name
@@ -32,13 +29,12 @@ def get_product_all_names():
 def get_products_by_name(name):
     """Returns a product by name"""
     return db.get_names(name)
-    pass
 
 # view all ptoducts catagories
 @app.route('/products/catagories', methods=['GET'])
 def get_product_all_catagories():
     """Returns all product catagories"""
-    pass
+    return db.get_all_catagories()
 
 # view products by price
 @app.route('/products/price/<price>', methods=['GET'])

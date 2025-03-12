@@ -25,7 +25,7 @@ class ProductsDB:
 
     def get_all_catagories(self):
         """Returns all catagories name"""
-        pass
+        return [item["category"] for item in self.table.all()]
     
     def get_small_from_price(self, price):
         """Returns products if product's price small from price"""
