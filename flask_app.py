@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from db import ProductsDB
 
 
@@ -40,13 +40,13 @@ def get_product_all_catagories():
 @app.route('/products/price/<price>', methods=['GET'])
 def get_products_by_price(price):
     """Returns a product by price"""
-    pass
+    return db.get_small_from_price(price)
 
 # view products expensive
 @app.route('/products/price/top/expensive', methods=['GET'])
-def get_products_expensive(price):
+def get_products_expensive():
     """Returns a top three expensive products"""
-    pass
+    return db.expensive_products()
 
 # view products between max_price and min_price
 @app.route('/products/price/between', methods=['GET'])
@@ -54,8 +54,20 @@ def get_between_price():
     """Returns a products between max_price and min_price
     get max_price and min_price from query_string
     """
-    pass
+    try:
+        min_price = float(request.args.get('min_price', 0))  # Default 0 if not provided
+        max_price = float(request.args.get('max_price', float('inf')))  # Default infinity if not provided
 
+        if min_price > max_price:
+            return jsonify({"error": "min_price should be less than max_price"}), 400
+
+        products = db.get_between_price(min_price, max_price)  # Ensure this function is safe
+        print(f"Database returned: {products}")  # Debugging
+        return products
+    
+    except ValueError:
+        return jsonify({"error": "Invalid price values"}), 400
+    
 # view add product
 @app.route('/products/add', methods=['POST'])
 def add_products():

@@ -29,15 +29,15 @@ class ProductsDB:
     
     def get_small_from_price(self, price):
         """Returns products if product's price small from price"""
-        pass
+        return self.table.search(self.query.price < float(price))
 
     def expensive_products(self):
         """Returns a top three expensive products"""
-        pass
+        return sorted([item["price"] for item in self.table.all()], reverse=True)[:3]
     
     def get_between_price(self, max_price, min_price):
         """Returns a products between max_price and min_price"""
-        pass
+        return self.table.search((self.query.price > float(min_price)) & (self.query.price < float(max_price)))
 
     def add_product(self, product):
         """Adds a product to the database"""
