@@ -74,7 +74,9 @@ def add_products():
     """Adds a product to the database"""
     if request.method == 'POST':
         data_dict = request.json
-        return db.add_product(data_dict)
+        data_dict = dict(data_dict)
+        db.add_product(data_dict)
+        return 'Success'
     else:
         return 'Error'
 
@@ -83,7 +85,11 @@ def add_products():
 @app.route('/products/delete/<doc_id>', methods=['DELETE'])
 def delete_product(doc_id):
     """Deletes a product from the database"""
-    pass
+    if request.method == 'DELETE':
+        db.delete_product(int(doc_id))
+        return 'Success'
+    else:
+        return 'Error'
 
 
 if __name__ == '__main__':

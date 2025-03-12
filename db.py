@@ -41,8 +41,9 @@ class ProductsDB:
 
     def add_product(self, product):
         """Adds a product to the database"""
-        return self.table.insert(product)
+        self.table.insert(product)
 
     def delete_product(self, doc_id):
         """Deletes a product from the database"""
+        self.table.remove(doc_ids=[doc_id])
 
