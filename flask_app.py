@@ -9,25 +9,29 @@ db = ProductsDB('products_db.json')
 @app.route('/products', methods=['GET'])
 def get_all_products():
     """Returns all products in the database"""
+    return db.all_products()
     pass
 
 # view all product by id
 @app.route('/products/id/<id>', methods=['GET'])
 def get_all_product(id):
     """Returns product in the database by id"""
+    return db.get_product_id(id)
     pass
 
 # view all ptoducts names
 @app.route('/products/names', methods=['GET'])
 def get_product_all_names():
     """Returns all product names"""
+    return db.get_all_product_names()
     pass
 
 
 # view products by name
-@app.route('/productss/name/<name>', methods=['GET'])
+@app.route('/products/name/<name>', methods=['GET'])
 def get_products_by_name(name):
     """Returns a product by name"""
+    return db.get_names(name)
     pass
 
 # view all ptoducts catagories
@@ -60,7 +64,11 @@ def get_between_price():
 @app.route('/products/add', methods=['POST'])
 def add_products():
     """Adds a product to the database"""
-    pass
+    if request.method == 'POST':
+        data_dict = request.json
+        return db.add_product(data_dict)
+    else:
+        return 'Error'
 
 
 # view delete product
